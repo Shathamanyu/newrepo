@@ -1,24 +1,145 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Map Tag</title>
-</head>
-<body>
-    <h1>The map and area elements</h1>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pizza Order</title>
+    <style>
+        body{
+            display: flex;
+            background-color: rgb(173, 255, 255);
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            width: 100vw;
+        }
+        #i1{
+            padding: 10px;
+            border: 1px solid black;
+            height: 50%;
+            width: 50%;
+            gap: 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+        #im1{
+            height: 70%;
+            width: 80%;
+            border: 1px solid black;
+            border-radius: 5px;
+            box-shadow: 1px 1px 10px 0px ;
 
-<p>Click on the computer, the phone, or the cup of coffee to go to a new page and read more about the topic:</p>
+        }
 
-<img src="https://png.pngtree.com/png-clipart/20230701/original/pngtree-office-desk-top-view-png-image_9244437.png" alt="Workplace" usemap="#workmap" width="1196" height="996">
+        #b1{
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            background-color: antiquewhite;
+            border: 1px solid;
+            border-radius: 25px;
+        }
+    </style>
+  </head>
+  <body>
+    <div id="i1">
+        Pizza Order <br>
+        <br>
+        <img id="im1" />
+        <div id="i2"></div>
+        <button id="b1" onclick="order()">click me</button>
+    </div>
+  </body>
 
-<map name="workmap">
-  <area shape="rect" coords="288,750,682,869" alt="Computer" href="https://5.imimg.com/data5/SELLER/Default/2024/3/395016660/IN/NA/FE/22993468/apple-desktop-computer.jpg" title="apple-desktop-computer">
-  <area shape="rect" coords="340,571,600,648" alt="Apple Keyboard" href="https://cdn.ecoustics.com/db0/wblob/17BA35E873D594/1722/3E3D1/Y1b5HxvzRIdGwsO38LFmSPRNVFlLsT--DfWz6jppWLA/magic-keyboard-2015.jpg" title="Apple Keyboard">
-  <area shape="circle" coords="182,812,25" alt="Pen Stand" href="https://diybaazar.com/publicuploads/seller/products/marble-pen-stand-1841-2567-1_diybaazar62ed7615aab6a.jpeg" title="Pen Stand">
-  <area shape="rect" coords="227,600,269,671" href="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQpaEqiW7EkmdV_S0fmfVKLg5thMCZAzWQjlw&s" alt="Apple Mouse" title="Apple Mouse">
-  <area shape="rect" coords="766,689,1079,874" href="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTfaJgwmIZea1z7dthmh0dbbUD7vzFYuiPjHA&s" alt="Books" title="Books">
-  <area shape="rect" coords="224,364,677,72" href="https://images.durian.in/Durian/durian/product/800x800/product_2022100612081665058136_38987.jpg" alt="Office Chair" title="Office Chair">
-</map>
-</body>
+  <script>
+    let i1=document.getElementById("i1");
+    let im1=document.getElementById("im1");
+    let i2=document.getElementById("i2");
+    let b1=document.getElementById("b1");
+    let b=document.createElement("button");
+            b.innerHTML="Re-Order...!";
+            b.style.backgroundColor="antiquewhite";
+            b.style.border="1px solid";
+            b.style.borderRadius="25px";
+            b.style.display="none";
+            b.onclick=order;
+            i1.append(b);
+
+
+
+    im1.src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/25/New-McDonald-HU-lg_%2843261171540%29.jpg/330px-New-McDonald-HU-lg_%2843261171540%29.jpg";
+
+    function Placeorder(callback){
+        b.style.display="none";
+        setTimeout(()=>{
+
+            console.log("Place order")
+            im1.src="https://www.restapp.com/wp-content/uploads/2021/12/pickup-2.png"
+            i2.innerHTML="Plz Place Your Order....📃";
+            callback()
+
+        },1000)
+    }
+
+    function Preparepizza(callback){
+        b.style.display="none";
+        setTimeout(()=>{
+            console.log("Prepare pizza");
+            im1.src="https://media.istockphoto.com/id/1291299956/photo/bakery-chef-prepare-pizza.jpg?s=612x612&w=0&k=20&c=9lusK08cwjyD3Bs4FjALUSFmCsy5OQmIJnAT-irnu6U=";
+            i2.innerHTML="Preparing Your Order";
+            callback()
+
+        },3000)
+    }
+
+    function Bakepizza(callback){
+        b.style.display="none";
+        setTimeout(()=>{
+            console.log("Bake pizza");
+            im1.src="https://media.istockphoto.com/id/899907172/photo/baked-tasty-margerita-pizza-near-oven.jpg?s=612x612&w=0&k=20&c=r3J2p-ixkOCZG2VejNxN-CvMHnQhhkOSSh0C9fStV0g=";
+            i2.innerHTML="Baking your pizza....";
+            callback()
+
+        },3000)
+    }
+
+    function Packpizza(callback){
+        b.style.display="none";
+        setTimeout(()=>{
+            console.log("Pack pizza");
+            im1.src="https://i.pinimg.com/originals/9b/0e/ca/9b0eca9afce170a44f1318f091bcd229.jpg";
+            i2.innerHTML="Packing your pizza...📦";
+            callback()
+        },1000)
+    }
+
+    function Deliverpizza(){
+        b.style.display="inline";
+        setTimeout(()=>{
+            console.log("Deliver pizza");
+            im1.src="https://incrediblebags.com/cdn/shop/articles/pizza_delivery_in_the_US.jpg?v=1630572628";
+            i2.innerHTML="Here is your pizza.....🍕🍔🍟";
+            
+            
+            //b.addEventListener("click",order());
+        },2000)
+    }
+function order(){
+    b1.style.display="none";
+
+    Placeorder(()=>{
+        Preparepizza(()=>{
+            Bakepizza(()=>{
+                Packpizza(()=>{
+                    Deliverpizza()
+                });
+            })
+        })
+    })
+
+}
+    
+
+
+  </script>
 </html>
